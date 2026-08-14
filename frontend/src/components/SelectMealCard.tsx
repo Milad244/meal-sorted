@@ -1,10 +1,15 @@
-import { MealProps } from "./MealCard";
+import MealCard, { MealProps } from "./MealCard";
 
-export default function({ meal }: {meal: MealProps }) {
+type SelectMealCardProps = {
+  meal: MealProps;
+  onSelect: (id: number | null) => void;
+};
+
+export default function SelectMealCard({ meal, onSelect } : SelectMealCardProps ) {
   return (
-    <div>
+    <div
+    onClick={() => {onSelect(meal.id)}}>
       {meal.name}
-      {/* TODO: Add onclick */}
     </div>
   );
 }
