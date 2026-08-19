@@ -1,6 +1,6 @@
 "use client";
 
-import MealCard, { MealProps } from "@/components/MealCard";
+import MealCard, { MealProps, NutritionProps } from "@/components/MealCard";
 import SelectMealCard from "@/components/SelectMealCard";
 import { useState } from "react";
 
@@ -39,17 +39,26 @@ export default function Home() {
     setSelectedMealId(id);
   }
 
+  function getMealNutrition(id: number) {
+    return {
+      calories: 450,
+      protein: 25,
+      carbs: 55,
+      saturatedFat: 4,
+      fat: 12,
+      fiber: 6,
+      sugar: 8,
+      sodium: 620,
+    }; // TODO: replace with real fetch/calc once backend exists
+  }
+
   function renderMealCard() {
     if (selectedMealId == null) return null;
 
     const meal = sampleMeals.find((meal) => meal.id === selectedMealId);
     if (meal === undefined) return null;
     
-    return <MealCard meal={meal}></MealCard>;
-  }
-
-  function getMealNutrition(id: number) {
-    return null; // TODO
+    return <MealCard meal={meal} nutrition={getMealNutrition(meal.id)}></MealCard>;
   }
 
   return (

@@ -20,7 +20,12 @@ export type NutritionProps = {
   sodium: number, // mg
 }
 
-export default function MealCard({ meal }: {meal: MealProps }) {
+type MealCardProps = {
+  meal: MealProps,
+  nutrition: NutritionProps
+}
+
+export default function MealCard({ meal, nutrition }: MealCardProps) {
   return (
     <div>
       Meal window
