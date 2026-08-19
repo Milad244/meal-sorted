@@ -9,6 +9,7 @@ const sampleMeals: MealProps[] = [
     name: "Spaghetti Bolognese",
     id: 1,
     description: "Classic Italian pasta with meat sauce.",
+    servings: 3,
     ingredients: ["spaghetti", "ground beef", "tomato sauce", "onion", "garlic"],
     instructions: [
       "Boil pasta for 10 minutes",
@@ -21,6 +22,7 @@ const sampleMeals: MealProps[] = [
     name: "Chicken Tacos",
     id: 2,
     description: "Quick and spicy weeknight tacos.",
+    servings: 1,
     ingredients: ["chicken breast", "taco shells", "lettuce", "cheese", "salsa"],
     instructions: [
       "Season and grill chicken 6 minutes per side",
@@ -44,6 +46,10 @@ export default function Home() {
     if (meal === undefined) return null;
     
     return <MealCard meal={meal}></MealCard>;
+  }
+
+  function getMealNutrition(id: number) {
+    return null; // TODO
   }
 
   return (
