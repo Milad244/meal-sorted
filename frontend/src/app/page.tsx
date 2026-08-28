@@ -65,8 +65,8 @@ export default function Home() {
   return (
     <main className="min-h-screen px-4 py-8 sm:px-6 lg:px-8">
       {/* Header */}
-      <header className="relative w-full max-w-7xl ml-30">
-        <div className="flex items-center gap-6">
+      <header className="relative ml-25 w-auto">
+        <div className="flex items-center gap-8">
           <h1 className="text-5xl font-bold text-rose-700 font-lobster">
             Meal Sorted
           </h1>
@@ -87,7 +87,7 @@ export default function Home() {
       </header>
 
       {/* Main content */}
-      <section className="mx-auto mt-10 grid w-full max-w-350 grid-cols-[16rem_minmax(0,1fr)] gap-12">
+      <section className="mt-8 ml-20 grid w-full max-w-350 grid-cols-[16rem_minmax(0,1fr)] gap-12">
         {/* Left sidebar */}
         <aside className="flex flex-col gap-3">
           {sampleMeals.map((meal) => (
