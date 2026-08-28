@@ -1,10 +1,10 @@
 
-export type MealProps = { // TODO for later: Add image
+export type MealProps = { // TODO: Add image
   name: string,
   id: number,
   description: string,
   servings: number,
-  ingredients: string[], // TODO for later: Make ingredient data type
+  ingredients: string[], // TODO: Make ingredient data type
   instructions: string[],
   rating: number,
 };
@@ -20,15 +20,20 @@ export type NutritionProps = {
   sodium: number, // mg
 }
 
-type MealCardProps = {
-  meal: MealProps,
-  nutrition: NutritionProps
+export type PriceProps = { // TODO: Add more data
+  cost: number,
 }
 
-export default function MealCard({ meal, nutrition }: MealCardProps) {
+type MealCardProps = {
+  meal: MealProps,
+  nutrition: NutritionProps,
+  price: PriceProps,
+}
+
+export default function MealCard({ meal, nutrition, price }: MealCardProps) {
   return (
     <div>
-      Meal window
+      Recipe | Nutrition | Price
     </div>
   );
 }

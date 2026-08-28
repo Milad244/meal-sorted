@@ -53,13 +53,19 @@ export default function Home() {
     }; // TODO: replace with real fetch/calc once backend exists
   }
 
+  function getMealPrice(id: number) {
+    return {
+      cost: 44,
+    }; // TODO: replace with real fetch/calc once backend exists
+  }
+
   function renderMealCard() {
     if (selectedMealId == null) return null;
 
     const meal = sampleMeals.find((meal) => meal.id === selectedMealId);
     if (meal === undefined) return null;
     
-    return <MealCard meal={meal} nutrition={getMealNutrition(meal.id)}></MealCard>;
+    return <MealCard meal={meal} nutrition={getMealNutrition(meal.id)} price={getMealPrice(meal.id)}></MealCard>;
   }
 
   return (
