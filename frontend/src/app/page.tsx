@@ -1,6 +1,6 @@
 "use client";
 
-import MealCard, { MealProps, NutritionProps } from "@/components/MealCard";
+import MealCard, { type MealProps, type NutritionProps, type PriceProps } from "@/components/MealCard";
 import HeaderButton from "@/components/HeaderButton";
 import SelectMealCard from "@/components/SelectMealCard";
 import { useState } from "react";

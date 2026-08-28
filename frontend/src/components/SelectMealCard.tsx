@@ -1,4 +1,4 @@
-import MealCard, { MealProps } from "./MealCard";
+import MealCard, { type MealProps } from "./MealCard";
 
 type SelectMealCardProps = {
   meal: MealProps;
