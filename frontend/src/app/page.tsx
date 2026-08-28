@@ -1,6 +1,7 @@
 "use client";
 
 import MealCard, { MealProps, NutritionProps } from "@/components/MealCard";
+import HeaderButton from "@/components/HeaderButton";
 import SelectMealCard from "@/components/SelectMealCard";
 import { useState } from "react";
 
@@ -62,17 +63,27 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen px-6 py-8">
+    <main className="min-h-screen px-4 py-8 sm:px-6 lg:px-8">
       {/* Header */}
-      <header className="relative mx-auto w-full max-w-7xl">
-        <h1 className="text-center text-5xl font-bold text-rose-700 font-lobster">
-          Meal Sorted
-        </h1>
+      <header className="relative w-full max-w-7xl ml-30">
+        <div className="flex items-center gap-6">
+          <h1 className="text-5xl font-bold text-rose-700 font-lobster">
+            Meal Sorted
+          </h1>
 
-        {/* Header Buttons */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2">
-          {/* Settings */}
+          {/* Main Header Buttons */}
+          <nav className="flex gap-1">
+            <HeaderButton label="Recipes" href="/recipes" />
+            <HeaderButton label="Pantry" href="/pantry" />
+            <HeaderButton label="Prep" href="/prep" />
+          </nav>
         </div>
+
+        {/* Right Header Buttons */}
+        <nav className="absolute right-0 top-1/2 flex -translate-y-1/2 gap-1">
+          <HeaderButton label="Login" href="/login" />
+          <HeaderButton label="Settings" href="/settings" />
+        </nav>
       </header>
 
       {/* Main content */}
