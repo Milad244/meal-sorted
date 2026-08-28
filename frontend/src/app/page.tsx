@@ -79,7 +79,7 @@ export default function Home() {
 
           {/* Main Header Buttons */}
           <nav className="flex gap-1">
-            <HeaderButton label="Recipes" href="/recipes" />
+            <HeaderButton label="Meals" href="/meals" />
             <HeaderButton label="Pantry" href="/pantry" />
             <HeaderButton label="Prep" href="/prep" />
           </nav>
