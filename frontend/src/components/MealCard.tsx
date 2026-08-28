@@ -1,3 +1,8 @@
+import { useState } from "react";
+import RecipeSection from "./RecipeSection";
+import NutritionSection from "./NutritionSection";
+import PriceSection from "./PriceSection";
+import SelectSectionCard, { type Section } from "./SelectSectionCard";
 
 export type MealProps = { // TODO: Add image
   name: string,
@@ -31,9 +36,43 @@ type MealCardProps = {
 }
 
 export default function MealCard({ meal, nutrition, price }: MealCardProps) {
+  const [section, setSection] = useState<Section>("recipe");
+
+  function getSection() {
+    switch(section) {
+      case "recipe":
+        return <RecipeSection meal={meal} />
+      case "nutrition":
+        return <NutritionSection nutrition={nutrition} />
+      case "price":
+        return <PriceSection price={price} />
+    }
+  }
+
   return (
     <div>
-      Recipe | Nutrition | Price
+      <div className="flex w-full gap-2 rounded-xl border border-gray-200 bg-gray-50 p-2">
+        <SelectSectionCard
+          label="Recipe"
+          section="recipe"
+          onSelect={setSection}
+          isSelected={section === "recipe"}
+        />
+        <SelectSectionCard
+          label="Nutrition"
+          section="nutrition"
+          onSelect={setSection}
+          isSelected={section === "nutrition"}
+        />
+        <SelectSectionCard
+          label="Price"
+          section="price"
+          onSelect={setSection}
+          isSelected={section === "price"}
+        />
+      </div>
+
+      {getSection()}
     </div>
   );
 }
