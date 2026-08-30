@@ -2,69 +2,42 @@
 
 import MealCard, { type MealProps, type NutritionProps, type PriceProps } from "@/components/MealCard";
 import SelectMealCard from "@/components/SelectMealCard";
-import { useState } from "react";
-
-const sampleMeals: MealProps[] = [
-  {
-    name: "Spaghetti Bolognese",
-    id: 1,
-    description: "Classic Italian pasta with meat sauce.",
-    servings: 3,
-    ingredients: ["spaghetti", "ground beef", "tomato sauce", "onion", "garlic"],
-    instructions: [
-      "Boil pasta for 10 minutes",
-      "Brown beef, add tomato sauce and onion",
-      "Mix pasta and sauce, serve hot",
-    ],
-    rating: 4.5,
-  },
-  {
-    name: "Chicken Tacos",
-    id: 2,
-    description: "Quick and spicy weeknight tacos.",
-    servings: 1,
-    ingredients: ["chicken breast", "taco shells", "lettuce", "cheese", "salsa"],
-    instructions: [
-      "Season and grill chicken 6 minutes per side",
-      "Fill shells with chicken, lettuce, cheese, salsa",
-    ],
-    rating: 4,
-  },
-];
+import { getMealNutrition, getMealPrice, getUserMeals } from "@/lib/meals";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [userMeals, setUserMeals] = useState<MealProps[]>([]);
   const [selectedMealId, setSelectedMealId] = useState<number | null>(null);
+  const [nutrition, setNutrition] = useState<NutritionProps | null>(null);
+  const [price, setPrice] = useState<PriceProps | null>(null);
+
+  useEffect(() => {
+    getUserMeals().then(setUserMeals);
+  }, [])
+
+  useEffect(() => {
+    if (selectedMealId === null) {
+      setNutrition(null);
+      setPrice(null);
+      return;
+    }
+
+    getMealNutrition(selectedMealId).then(setNutrition);
+    getMealPrice(selectedMealId).then(setPrice);
+    
+  }, [selectedMealId])
 
   function updateSelectMealID(id: number | null) {
     setSelectedMealId(id);
   }
 
-  function getMealNutrition(id: number) {
-    return {
-      calories: 450,
-      protein: 25,
-      carbs: 55,
-      saturatedFat: 4,
-      fat: 12,
-      fiber: 6,
-      sugar: 8,
-      sodium: 620,
-    }; // TODO: replace with real fetch/calc once backend exists
-  }
-
-  function getMealPrice(id: number) {
-    return {
-      cost: 44,
-    }; // TODO: replace with real fetch/calc once backend exists
-  }
-
   function renderMealCard() {
-    if (selectedMealId == null) return null;
+    if (selectedMealId == null || nutrition == null || price == null) return null;
 
-    const meal = sampleMeals.find((meal) => meal.id === selectedMealId);
+    const meal = userMeals.find((meal) => meal.id === selectedMealId);
     if (meal === undefined) return null;
     
-    return <MealCard meal={meal} nutrition={getMealNutrition(meal.id)} price={getMealPrice(meal.id)}></MealCard>;
+    return <MealCard meal={meal} nutrition={nutrition} price={price}></MealCard>;
   }
 
   return (
@@ -73,7 +46,7 @@ export default function Home() {
       <section className="mt-8 ml-20 grid w-full max-w-350 grid-cols-[16rem_minmax(0,1fr)] gap-12">
         {/* Left sidebar */}
         <aside className="flex flex-col gap-3">
-          {sampleMeals.map((meal) => (
+          {userMeals.map((meal) => (
             <SelectMealCard
               key={meal.id}
               meal={meal}
