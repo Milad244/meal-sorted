@@ -72,7 +72,9 @@ export default function MealCard({ meal, nutrition, price }: MealCardProps) {
         />
       </div>
 
-      {getSection()}
+      <div className="p-3">
+        {getSection()}
+      </div>
     </div>
   );
 }
