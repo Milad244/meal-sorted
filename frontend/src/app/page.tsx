@@ -1,7 +1,6 @@
 "use client";
 
 import MealCard, { type MealProps, type NutritionProps, type PriceProps } from "@/components/MealCard";
-import HeaderButton from "@/components/HeaderButton";
 import SelectMealCard from "@/components/SelectMealCard";
 import { useState } from "react";
 
@@ -69,29 +68,7 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen px-4 py-8 sm:px-6 lg:px-8">
-      {/* Header */}
-      <header className="relative ml-25 w-auto">
-        <div className="flex items-center gap-8">
-          <h1 className="text-5xl font-bold text-rose-700 font-lobster">
-            Meal Sorted
-          </h1>
-
-          {/* Main Header Buttons */}
-          <nav className="flex gap-1">
-            <HeaderButton label="Meals" href="/meals" />
-            <HeaderButton label="Pantry" href="/pantry" />
-            <HeaderButton label="Prep" href="/prep" />
-          </nav>
-        </div>
-
-        {/* Right Header Buttons */}
-        <nav className="absolute right-0 top-1/2 flex -translate-y-1/2 gap-1">
-          <HeaderButton label="Login" href="/login" />
-          <HeaderButton label="Settings" href="/settings" />
-        </nav>
-      </header>
-
+    <div>
       {/* Main content */}
       <section className="mt-8 ml-20 grid w-full max-w-350 grid-cols-[16rem_minmax(0,1fr)] gap-12">
         {/* Left sidebar */}
@@ -122,6 +99,6 @@ export default function Home() {
 
         </div>
       </section>
-    </main>
+    </div>
   );
 }

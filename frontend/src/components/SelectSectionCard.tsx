@@ -12,7 +12,7 @@ export default function SelectSectionCard({ label, section, onSelect, isSelected
         <button
           onClick={() => onSelect(section)}
           type="button"
-          className={`flex-1 rounded-lg px-4 py-3 text-sm font-semibold transition
+          className={`flex-1 rounded-lg px-4 py-3 text-base font-semibold transition
             ${isSelected
               ? "text-gray-900 shadow-sm bg-white hover:bg-gray-100"
               : "text-gray-500 hover:bg-white hover:text-gray-900"
