@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import HeaderButton from "@/components/HeaderButton";
 import { usePathname } from "next/navigation";
 
@@ -20,9 +21,11 @@ export default function SiteHeader() {
   return (
     <header className="relative ml-25 w-auto">
       <div className="flex items-center gap-8">
-        <h1 className="text-5xl font-bold text-rose-700 font-lobster">
-          Meal Sorted
-        </h1>
+        <Link href="/">
+          <h1 className="text-5xl font-bold text-rose-700 font-lobster">
+            Meal Sorted
+          </h1>
+        </Link>
 
         <nav className="flex gap-1">
           {mainNavItems.map((item) => (
