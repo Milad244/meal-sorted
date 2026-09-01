@@ -1,0 +1,22 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Milad244", email = "145618774+Milad244@users.noreply.github.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "alembic>=1.19.1",
+    "fastapi>=0.141.1",
+    "psycopg2-binary>=2.9.12",
+    "pydantic-settings>=2.15.0",
+    "python-dotenv>=1.2.3",
+    "sqlalchemy>=2.0.52",
+    "uvicorn>=0.52.4",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.8,<0.13.0"]
+build-backend = "uv_build"

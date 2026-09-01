@@ -3,3 +3,11 @@
 
 # macOS temporary files
 .DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Environment variables
+.env
