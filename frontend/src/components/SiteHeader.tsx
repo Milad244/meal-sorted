@@ -33,7 +33,7 @@ export default function SiteHeader() {
               key={item.href}
               label={item.label}
               href={item.href}
-              isActive={pathname === item.href}
+              isActive={pathname === item.href || pathname.startsWith(item.href + "/")}
             />
           ))}
         </nav>
