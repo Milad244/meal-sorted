@@ -1,4 +1,4 @@
-import { MealProps, NutritionProps, PriceProps } from "@/components/MealCard";
+import type { MealProps, NutritionProps, PriceProps } from "@/components/MealCard";
 
 // TODO: replace with real fetch/calc once backend exists
 export async function getUserMeals(): Promise<MealProps[]> {
